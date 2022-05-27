@@ -5,7 +5,7 @@ import Axios from "axios";
 
 
 export const PutData = async (nota) => {
-  await Axios.put(`https://localhost:44328/api/nota/${nota.id}`, {
+  await Axios.put(`${process.env.REACT_APP_CREDENTIAL_DATA}/${nota.id}`, {
     id:nota.id,
     titulo: nota.titulo,
     cuerpo: nota.cuerpo
@@ -23,7 +23,7 @@ export const PutData = async (nota) => {
 
 
 export const PostData = async (nota) => {
-  await Axios.post('https://localhost:44328/api/nota', {
+  await Axios.post(`${process.env.REACT_APP_CREDENTIAL_DATA}`, {
     titulo: nota.titulo,
     cuerpo: nota.cuerpo
   })
@@ -40,7 +40,7 @@ export const PostData = async (nota) => {
 
 export const fetchLastData = async (setnotas) => {
 
-  await Axios.get('https://localhost:44328/api/nota/last')
+  await Axios.get(`${process.env.REACT_APP_CREDENTIAL_DATA}/last`)
   .then(function (response) {
     // console.log(response);
     setnotas(response.data);
