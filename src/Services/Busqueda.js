@@ -3,7 +3,7 @@ import Axios from "axios";
 
 
 export const fetchData_Busca = async (termino,setallNotas) => {
-    await Axios.get(`https://localhost:44328/api/nota/busqueda?termino=${termino.termino}`,{
+    await Axios.get(`${process.env.REACT_APP_CREDENTIAL_DATA}/busqueda?termino=${termino.termino}`,{
         termino
     })
     .then(function (response) {

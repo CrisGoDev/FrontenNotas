@@ -5,9 +5,9 @@ export const fetchData = async (setnotas) => {
     try {
       const response = await Axios({
         method:"get",
-        url: "https://localhost:44328/api/nota",
+        url: `${process.env.REACT_APP_CREDENTIAL_DATA}`,
       });
-      if(setnotas!=undefined){
+      if(setnotas!==undefined){
         setnotas(response.data);
       }
     } catch (error) {
