@@ -1,38 +1,59 @@
-.App {
-  text-align: center;
+:root{
+    font-family: 'BIZ UDPGothic', sans-serif;
+    font-family: 'Libre Baskerville', serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Titulo{
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    font-size: 70px;
+}
+.Titulo_sub{
+    font-size: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.nav-container{
+    position: fixed;
+    left: 0;
+    /* margin: 10px; */
+    height: 1550px;
+    margin: 0px;
+    width: 200px;
+    background-color: rgb(0, 21, 41);
+    
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.main{
+    width: 70%;
+    margin-left: 20%;
+    
+} 
+
+.navbar{
+    width: 100%;
+    padding-top: 0px!important;
 }
 
-.App-link {
-  color: #61dafb;
+.collapse{
+    width: 100%;
+}
+.margen-abajo{
+    margin-bottom: 20px ;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.margen-arriba{
+    margin-top: 10px;
+}
+
+.margen-abajo-lista{
+    margin-bottom: 30% !important;   
+}
+.busqueda{
+    width: 100%;
 }
