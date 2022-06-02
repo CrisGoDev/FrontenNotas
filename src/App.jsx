@@ -34,7 +34,7 @@ function App() {
             Bloc de Notas<br />
             All Right Reserved
           </Typography.Title>
-          <Space>
+          <Space className='margen-abajo'>
             <Link to="/">Home</Link>
             <Link to="/Notas">Revisar Notas</Link>  
           </Space>

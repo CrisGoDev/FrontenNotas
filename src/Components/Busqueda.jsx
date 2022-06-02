@@ -5,27 +5,34 @@ import { FormControl } from 'react-bootstrap';
 import fetchData_Busca from '../Services/Busqueda'
 import { useState } from 'react';
 import fetchData from '../Services/GetNotas';
+import { EraserFill } from 'react-bootstrap-icons';
+// import IconWithTooltip from 'icon-with-tooltip';
 
-const Busqueda = ({setallNotas}) => {
-    const [termino, settermino] = useState({
-        termino:''
+const Busqueda = ({ setallNotas }) => {
+    const [Termino, settermino] = useState({
+        termino: ''
     })
-    const buscar=()=>{
-        if(termino.termino===''){
-            fetchData(setallNotas);
-        }else{
-            fetchData_Busca(termino,setallNotas)
+
+    const buscar = () => {
+        if (Termino.termino === '') {
+            Todos();
+        } else {
+            fetchData_Busca(Termino, setallNotas)
         }
-        
+
+    }
+    // Método para obtener todos los registros
+    const Todos=()=>{
+        fetchData(setallNotas);
     }
 
-
+    // aca actualiza el termino recibiendo el valor que está escribiendo
     const updateState = e => {
         settermino({
-            ...termino,
+            ...Termino,
             [e.target.name]: e.target.value
         })
-       
+
     }
     return (
         <div className='busqueda'>
@@ -36,11 +43,19 @@ const Busqueda = ({setallNotas}) => {
                     aria-describedby="basic-addon2"
                     name='termino'
                     onChange={updateState}
+                    value={Termino.termino}
                 />
-                <Button variant="outline-secondary" onClick={()=>buscar()} id="button-addon2">
+                <Button variant="outline-secondary" onClick={() => buscar()} id="button-addon2">
                     Buscar
                 </Button>
+                <EraserFill color="royalblue" className='erase' onClick={()=>{
+                    settermino({termino:''})
+                    Todos(); 
+                }} size={35} 
+                />
+                
             </InputGroup>
+
         </div>
     )
 }

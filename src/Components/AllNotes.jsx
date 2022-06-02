@@ -5,7 +5,7 @@ import { ListGroup } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
 import fetchData from '../Services/GetNotas';
 import Toast from 'react-bootstrap/Toast'
-import DropdownList from './Dropdown' 
+import DropdownList from './Dropdown'
 import Busqueda from './Busqueda';
 
 
@@ -16,7 +16,7 @@ function AllNotes() {
     const [allNotas, setallNotas] = useState([])
     const [nota, setnota] = useState();
     const [send, setsend] = useState();
-    const [ordenNota, setordenNota] = useState("Default")
+    const [ordenNota, setordenNota] = useState("Mas viejos Primero")
 
     const handleNew = () => {
         setVisibilidad(true);
@@ -38,40 +38,39 @@ function AllNotes() {
         fetchData(setallNotas);
     }, [send])
 
-    useEffect(()=>{
-        var CopiaNotas= [...allNotas];
-        if(ordenNota==='Fecha'){
-            const ordenados=CopiaNotas.sort((a,b)=>
-            {
-                return Date.parse(a.fecha)-Date.parse(b.fecha)
-            }
-            )
-            setallNotas(ordenados);
-        }if(ordenNota==='Titulo'){
-            function SortArray(x, y){
-                if (x.titulo < y.titulo) {return -1;}
-                if (x.titulo > y.titulo) {return 1;}
+    useEffect(() => {
+        var CopiaNotas = [...allNotas];
+        if (ordenNota === 'Mas nuevos primero') {
+            setallNotas(CopiaNotas.reverse());
+        } if (ordenNota === 'Titulo') {
+            function SortArray(x, y) {
+                if (x.titulo < y.titulo) { return -1; }
+                if (x.titulo > y.titulo) { return 1; }
                 return 0;
             }
-            
-            const ordenados=CopiaNotas.sort(SortArray);
+
+            const ordenados = CopiaNotas.sort(SortArray);
             setallNotas(ordenados);
         }
-        if(ordenNota==="Default"){
+        if (ordenNota === "Mas viejos Primero") {
             fetchData(setallNotas);
         }
-    },[ordenNota])
+    }, [ordenNota])
 
-
+    const FormatDate = (fecha) => {
+        var date = new Date(fecha);
+        return date.toLocaleString();
+    }
 
     return (
         <>
-            {visibilidad ? <Nota show={visibilidad} nota={nota} estado={estado} setallNotas={setallNotas} setShow={setVisibilidad} setestado={setestado}/> : null}
-            <Busqueda setallNotas={setallNotas}/>
+            {/* Acá renderiza el modal y pasa todos los props necesarios para su función */}
+            {visibilidad ? <Nota show={visibilidad} nota={nota} estado={estado} setallNotas={setallNotas} setShow={setVisibilidad} setestado={setestado} /> : null}
+            <Busqueda setallNotas={setallNotas} />
             <Button variant="primary" className='margen-abajo' onClick={() => handleNew()}>
                 Agrega una nota
             </Button>
-            <DropdownList setordenNota={setordenNota} ordenNota={ordenNota}/>
+            <DropdownList setordenNota={setordenNota} ordenNota={ordenNota} />
             <Nota />
             <ListGroup as="ol" className='margen-abajo-lista' numbered>
                 {
@@ -87,7 +86,8 @@ function AllNotes() {
                                     <div className="fw-bold">{not.titulo}</div>
                                     {not.cuerpo}
 
-                                    <div className="fw-bold"> La fecha fue: {not.fecha}</div>                                    
+                                    <div className="fw-bold"> La fecha fue: {FormatDate(not.fecha)}</div>
+
                                 </div>
                                 <Badge bg="primary" pill>
                                     Presiona y mira!

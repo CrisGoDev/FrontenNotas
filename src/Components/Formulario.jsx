@@ -27,8 +27,6 @@ function Formulario({ setallNotas, handleClose,nota }) {
 
     }
 
-
-
     const updateState = e => {
         setNotaSubmit({
             ...NotaSubmit,
@@ -50,10 +48,11 @@ function Formulario({ setallNotas, handleClose,nota }) {
             <Form onSubmit={submitNota}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Titulo</Form.Label>
+                    {/* aca se valida si la nota que pasa es para editar o para crear una nueva verficando la prop de nota */}
                     {
                         nota===undefined?
-                        <Form.Control type="text" name="titulo" onChange={updateState}  placeholder="Agrega un titulo" required />
-                        :<Form.Control type="text" name="titulo" onChange={updateState} value={nota.titulo} placeholder="Agrega un titulo" required />
+                        <Form.Control type="text" name="titulo" onChange={updateState}  placeholder="Agrega un titulo" required minLength={10} maxLength={120}/>
+                        :<Form.Control type="text" name="titulo" onChange={updateState} value={nota.titulo} placeholder="Agrega un titulo" required minLength={10} maxLength={120} />
                     }
                     
                     <Form.Text className="text-muted">
@@ -66,8 +65,8 @@ function Formulario({ setallNotas, handleClose,nota }) {
                     <FloatingLabel controlId="floatingTextarea" className="mb-3">
                         {
                             nota===undefined?
-                            <Form.Control as="textarea" name="cuerpo" onChange={updateState} placeholder="Deja una nota" style={{ height: '100px' }} required />
-                            :<Form.Control as="textarea" name="cuerpo" value={nota.cuerpo} onChange={updateState} placeholder="Deja una nota" style={{ height: '100px' }} required />
+                            <Form.Control as="textarea" name="cuerpo" onChange={updateState} placeholder="Deja una nota" style={{ height: '100px' }} required minLength={10} maxLength={1000}/>
+                            :<Form.Control as="textarea" name="cuerpo" value={nota.cuerpo} onChange={updateState} placeholder="Deja una nota" style={{ height: '100px' }} required  minLength={10} maxLength={1000}/>
                         }
                         
                     </FloatingLabel>
