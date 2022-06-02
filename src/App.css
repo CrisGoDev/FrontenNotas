@@ -1,60 +1,91 @@
-:root{
-    font-family: 'BIZ UDPGothic', sans-serif;
-    font-family: 'Libre Baskerville', serif;
-    margin: 0;
-    padding: 0;
-    border: 0;
+:root {
+  font-family: "BIZ UDPGothic", sans-serif;
+  font-family: "Libre Baskerville", serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-.Titulo{
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    font-size: 70px;
+.Titulo {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  font-size: 70px;
 }
-.Titulo_sub{
-    font-size: 30px;
+.Titulo_sub {
+  font-size: 30px;
+}
+
+.main {
+  width: 70%;
+  margin-left: 20%;
+}
+
+.navbar {
+  width: 100%;
+  padding-top: 0px !important;
+}
+
+.collapse {
+  width: 100%;
+}
+.margen-abajo {
+  margin-bottom: 20px;
+}
+
+.margen-arriba {
+  margin-top: 10px;
+}
+
+.margen-abajo-lista {
+  margin-bottom: 30% !important;
+}
+.busqueda {
+  width: 100%;
+}
+
+.erase {
+  cursor: pointer;
+}
+
+.erase:hover {
+  color: #6c757d;
+}
+
+.up {
+  margin-top: 5px;
 }
 
 
-
-.main{
-    width: 70%;
-    margin-left: 20%;
-    
-} 
-
-.navbar{
-    width: 100%;
-    padding-top: 0px!important;
+.tooltipErase .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 115%;
+  left: 100%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-.collapse{
-    width: 100%;
-}
-.margen-abajo{
-    margin-bottom: 20px ;
-}
-
-.margen-arriba{
-    margin-top: 10px;
-}
-
-.margen-abajo-lista{
-    margin-bottom: 30% !important;   
-}
-.busqueda{
-    width: 100%;
-}
-
-.erase{
-    cursor: pointer;
-}
-
-.erase:hover{
-    color: #6c757d;
-}
-
-.up{
-    margin-top: 5px;
-}
+.tooltipErase .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .tooltipErase:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
