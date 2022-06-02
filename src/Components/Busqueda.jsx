@@ -6,7 +6,6 @@ import fetchData_Busca from '../Services/Busqueda'
 import { useState } from 'react';
 import fetchData from '../Services/GetNotas';
 import { EraserFill } from 'react-bootstrap-icons';
-// import IconWithTooltip from 'icon-with-tooltip';
 
 const Busqueda = ({ setallNotas }) => {
     const [Termino, settermino] = useState({
@@ -48,12 +47,15 @@ const Busqueda = ({ setallNotas }) => {
                 <Button variant="outline-secondary" onClick={() => buscar()} id="button-addon2">
                     Buscar
                 </Button>
+                <div className='tooltipErase'>
                 <EraserFill color="royalblue" className='erase' onClick={()=>{
                     settermino({termino:''})
                     Todos(); 
                 }} size={35} 
                 />
-                
+                <span class="tooltiptext">Deseas Borrar?</span>
+                </div>
+               
             </InputGroup>
 
         </div>
